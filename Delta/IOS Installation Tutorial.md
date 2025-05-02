@@ -12,6 +12,15 @@ Follow this **step-by-step guide** carefully to successfully install and sign th
 Make sure you have the latest **Delta IPA file downloaded onto your device**:  
 👉 [https://deltaexploits.gg/delta-executor-ios](https://deltaexploits.gg/delta-executor-ios)
 
+⚠ **Important:**  
+This guide assumes you have **basic experience using iOS devices**, including:  
+- Knowing how to navigate **Settings**  
+- Understanding how to **install and trust profiles**  
+- Knowing where downloaded files are stored  
+- Using apps or tools to **unzip files on iOS**
+
+If you are unfamiliar with these steps, please research them first or seek help before proceeding.
+
 ---
 
 ## 🛠 Installation Steps
@@ -27,6 +36,10 @@ Go to the official site:
 
 1. On the homepage, tap **“Install DNS”**.  
 2. A configuration profile will automatically download.
+
+<p align="center">
+  <img src="./Assets/1.png" alt="Install DNS Profile Screenshot" width="400"/>
+</p>
 
 ---
 
@@ -56,7 +69,11 @@ Go to the official site:
 
 1. Return to:  
 👉 [https://khoindvn.io.vn/](https://khoindvn.io.vn/)  
-2. Tap **“Install ESign Certificate”**.
+2. Tap **“Download ESign Certificate”**.
+
+<p align="center">
+  <img src="./Assets/2.png" alt="Install ESign Certificate Screenshot" width="400"/>
+</p>
 
 ---
 
@@ -88,7 +105,9 @@ Go to the official site:
 
 1. Tap on the **Delta IPA** file to unzip it.  
 2. You should see a folder named **Payload**.
-
+<p align="center">
+  <img src="./Assets/3.png" alt="Payload Folder Screenshot" width="400"/>
+</p>
 ---
 
 ### **Step 11: Navigate to Signature Folder**
