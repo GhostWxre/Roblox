@@ -77,15 +77,7 @@ Go to the official site:
 
 ---
 
-### **Step 7: Trust the ESign Certificate**
-
-1. Go to **Settings** → **General** → **VPN & Device Management**.  
-2. Find and **trust** the ESign certificate.  
-3. When prompted, tap **“Allow”** and restart your device.
-
----
-
-### **Step 8: Open the ESign App**
+### **Step 7: Open the ESign App**
 
 - Launch the **ESign app**.  
 - Import the **certificate** (be sure to **unzip** it first).  
@@ -93,7 +85,7 @@ Go to the official site:
 
 ---
 
-### **Step 9: Import Certificate Management**
+### **Step 8: Import Certificate Management**
 
 1. Inside ESign, tap the **same certificate** you used for installing ESign.  
 2. ⚠ **Make sure the certificate name matches the ESign app name**, or it will fail.  
@@ -101,7 +93,7 @@ Go to the official site:
 
 ---
 
-### **Step 10: Unzip the Delta IPA**
+### **Step 9: Unzip the Delta IPA**
 
 1. Tap on the **Delta IPA** file to unzip it.  
 2. You should see a folder named **Payload**.
@@ -110,7 +102,7 @@ Go to the official site:
 </p>
 ---
 
-### **Step 11: Navigate to Signature Folder**
+### **Step 10: Navigate to Signature Folder**
 
 - Go to:  
 `Payload > roblox.app > signature > signature`
