@@ -139,6 +139,11 @@ TextLabel_2.Size = UDim2.new(0, nWidth, 0, 22)
 TextLabel_3.Size = UDim2.new(0, aWidth, 0, 22)
 TextLabel_3.Position = UDim2.new(1, -aWidth, 1, -22)
 
+local UIStroke = Instance.new("UIStroke")
+UIStroke.Color = Color3.fromRGB(48, 78, 113)
+UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+UIStroke.Thickness = 2
+UIStroke.Parent = ImageLabel
 
 ImageButton.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
