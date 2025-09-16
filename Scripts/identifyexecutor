@@ -133,8 +133,12 @@ TextLabel_4.TextWrapped = true
 local nWidth = GetWidth(n, 6)
 local aWidth = GetWidth(a, 6)
 
+
 TextLabel_2.Size = UDim2.new(0, nWidth, 0, 22)
 TextLabel_3.Size = UDim2.new(0, aWidth, 0, 22)
+TextLabel_3.Position = UDim2.new(1, -aWidth, 1, -22)
+
+
 ImageButton.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
 end)
