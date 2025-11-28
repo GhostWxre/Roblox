@@ -114,7 +114,7 @@ if Home and Home:FindFirstChild("Holder") then
 
     local UIList = Home:FindFirstChild("Holder"):FindFirstChild("UIListLayout");
 
-    GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+    UIList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
         Home:FindFirstChild("Holder").CanvasSize = UDim2.new(1, 0, 0, UIList.AbsoluteContentSize.Y);
     end);
 
