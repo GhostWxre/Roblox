@@ -43,6 +43,7 @@ if Home and Home:FindFirstChild("Holder") then
         for _, v in pairs(Holder:GetChildren()) do
             if v.Name == "Script" then
                 v.Size = UDim2.new(0.998, 0, 0, height);
+                v.Active = false;
             end
         end
 
@@ -51,11 +52,13 @@ if Home and Home:FindFirstChild("Holder") then
 
         Holder.CanvasSize = UDim2.new(1, 0, 0, UIList.AbsoluteContentSize.Y);
         Holder.ScrollingDirection = Enum.ScrollingDirection.Y;
+        Holder.Active = true;
 
         UIList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
             for _, v in pairs(Holder:GetChildren()) do
                 if v.Name == "Script" then
                     v.Size = UDim2.new(0.998, 0, 0, height);
+                    v.Active = false;
                 end
             end
             Holder.CanvasSize = UDim2.new(1, 0, 0, UIList.AbsoluteContentSize.Y);
