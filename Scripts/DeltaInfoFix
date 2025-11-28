@@ -8,7 +8,8 @@
 
     Executor Closures Used:
         • identifyexecutor          (line 15)
-        • gethui                    (line 22)
+        • cloneref                  (lines 18 & 19)
+        • gethui                    (line 23)
 
 ]]
 
