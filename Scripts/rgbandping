@@ -1,0 +1,105 @@
+--[[
+
+    Last Updated : 28 Nov 2025
+
+    License:
+        Free for personal use and personal modification.
+        Redistribution of modified versions is NOT permitted.
+
+    Executor Closures Used:
+        • identifyexecutor          (line 29)
+        • cloneref                  (lines 31 & 32)
+        • setreadonly               (lines 101 & 104)
+
+    Usage:
+        • Delta.Ui.Rgb:Start()
+            Begins the rainbow effect. If previously stopped, resumes animation.
+
+        • Delta.Ui.Rgb:Stop()
+            Stops the rainbow effect immediately.
+
+        • Delta.Ui.Rgb:SetSpeed(n: number)
+            Adjusts hue cycling speed (lower = faster).
+
+]]
+
+
+
+
+if identifyexecutor() ~= "Delta" then return end
+
+local RunService = cloneref(game:GetService("RunService"));
+local StatsService = cloneref(game:GetService("Stats"));
+
+local UIStroke, Executor;
+
+for _, v in pairs(gethui():GetChildren()) do
+    if v:IsA("ScreenGui") then
+
+        local ImageButton = v:FindFirstChildOfClass("ImageButton");
+
+        if ImageButton and tostring(ImageButton.Image):find("new_logo.png", 1, true) then
+            UIStroke = ImageButton:FindFirstChildOfClass("UIStroke");
+        end
+
+        Executor = v:FindFirstChild("Executor") or Executor;
+
+        if UIStroke and Executor then break; end
+
+    end
+end
+
+-- Ping fixer
+coroutine.wrap(function()
+    local PingLabel = Executor.Sidemenu.Network.Overlay.Holder.Information:FindFirstChild("Ping");
+    while true do
+        task.wait(0.5)
+        PingLabel.Text = string.format("<font color='#4FA4F2'>%d</font> MS Ping", math.floor(StatsService.PerformanceStats.Ping:GetValue()))
+    end
+end)();
+
+
+-- RGB
+if UIStroke then
+    
+    if typeof(Delta.Ui) == "table" then
+        if typeof(Delta.Ui.Rgb) == "table" then
+            return;
+        end
+    end
+
+    local Rgb = {};
+    Rgb.__index = Rgb;
+
+    local hue, speed, clock, rgbConn = 0, 0.15, os.clock(), nil;
+
+    function Rgb:Start()
+        if rgbConn then rgbConn:Disconnect(); end
+
+        rgbConn = RunService.Heartbeat:Connect(function()
+            if os.clock() - clock >= speed then
+                clock = os.clock();
+                hue = (hue + 0.01) % 1;
+                UIStroke.Color = Color3.fromHSV(hue, 1, 1);
+            end
+        end);
+
+    end
+
+    function Rgb:Stop()
+        if rgbConn then
+            rgbConn:Disconnect();
+            rgbConn = nil;
+        end
+    end
+
+    function Rgb:SetSpeed(n: number)
+        if n >= 0 then speed = n; end
+    end
+
+    setreadonly(Delta, false);
+    Delta.Ui = Delta.Ui or {};
+    Delta.Ui.Rgb = Rgb;
+    setreadonly(Delta, true);
+
+end
