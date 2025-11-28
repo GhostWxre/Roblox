@@ -30,6 +30,7 @@ if identifyexecutor() ~= "Delta" then return end
 
 local RunService = cloneref(game:GetService("RunService"));
 local StatsService = cloneref(game:GetService("Stats"));
+local Players = cloneref(game:GetService("Players"));
 
 local UIStroke, Executor;
 
@@ -49,15 +50,20 @@ for _, v in pairs(gethui():GetChildren()) do
     end
 end
 
--- Ping fixer
+-- Stats fixer
 coroutine.wrap(function()
     local PingLabel = Executor.Sidemenu.Network.Overlay.Holder.Information:FindFirstChild("Ping");
+    local PlayersLabel = Executor.Sidemenu.Network.Overlay.Holder.Information:FindFirstChild("Players");
+
     while true do
         task.wait(0.5)
-        PingLabel.Text = string.format("<font color='#4FA4F2'>%d</font> MS Ping", math.floor(StatsService.PerformanceStats.Ping:GetValue()))
+        PingLabel.Text = string.format("<font color='#4FA4F2'>%d</font> MS Ping", math.floor(StatsService.PerformanceStats.Ping:GetValue()));
+        PlayersLabel.Text = string.format("<font color='#4FA4F2'>%d</font> players", #Players:GetPlayers());
     end
+
 end)();
 
+Joiner = Players.OnJoin
 
 -- RGB
 if UIStroke then
