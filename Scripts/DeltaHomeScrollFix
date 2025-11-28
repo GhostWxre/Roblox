@@ -47,7 +47,10 @@ if Home and Home:FindFirstChild("Holder") then
         end
 
         local UIList = Holder:FindFirstChild("UIListLayout");
+        UIList.Padding = UDim.new(0, 8);
+
         Holder.CanvasSize = UDim2.new(1, 0, 0, UIList.AbsoluteContentSize.Y);
+        Holder.ScrollingDirection = Enum.ScrollingDirection.Y;
 
         UIList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
             for _, v in pairs(Holder:GetChildren()) do
