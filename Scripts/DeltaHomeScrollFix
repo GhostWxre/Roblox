@@ -1,0 +1,58 @@
+--[[
+
+    Last Updated : 28 Nov 2025
+
+    License:
+        Free for personal use and personal modification.
+        Redistribution of modified versions is NOT permitted.
+
+    Executor Closures Used:
+        • identifyexecutor          (line 15)
+        • gethui                    (line 23)
+
+]]
+
+if identifyexecutor() ~= "Delta" then return; end
+
+repeat
+    task.wait(1)
+until #gethui():GetChildren() >= 3;
+
+local Home;
+
+for _, v in pairs(gethui():GetChildren()) do
+
+    if v:IsA("ScreenGui") and v:FindFirstChild("Home") and v:FindFirstChild("Home"):FindFirstChild("Holder") then
+
+        Home = v:FindFirstChild("Home");
+        break;
+
+    end
+end
+
+
+if Home and Home:FindFirstChild("Holder") then
+    
+    local Holder = Home:FindFirstChild("Holder");
+    local anyScript = Holder:FindFirstChild("Script");
+
+    if anyScript then
+
+        local height = anyScript.AbsoluteSize.Y;
+
+        for _, v in pairs(Holder:GetChildren()) do
+            if v.Name == "Script" then
+                v.Size = UDim2.new(0.998, 0, 0, height);
+            end
+        end
+
+        local UIList = Holder:FindFirstChild("UIListLayout");
+        Holder.CanvasSize = UDim2.new(1, 0, 0, UIList.AbsoluteContentSize.Y);
+
+        UIList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+            Holder.CanvasSize = UDim2.new(1, 0, 0, UIList.AbsoluteContentSize.Y);
+        end);
+
+    end
+
+end
