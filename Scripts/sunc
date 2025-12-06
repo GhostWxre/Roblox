@@ -1,0 +1,16 @@
+--[[
+
+    Teleports you to sUNC' game as long as the game supports teleporting to other games.
+    Makes it easier to get into the game rather than trying to search for it.
+    If using Delta, make sure Verify Teleports is disabled else you won't be able to teleport if needed.
+]]
+
+
+local suncgameid = 133609342474444;
+
+if game.PlaceId ~= suncgameid then
+    game:GetService("TeleportService"):Teleport(suncgameid, game:GetService("Players").LocalPlayer)
+else
+    getgenv().sUNCDebug = { ["printcheckpoints"] = false, ["delaybetweentests"] = 0 }
+	loadstring(game:HttpGet("https://script.sunc.su/"))()
+end
